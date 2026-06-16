@@ -36,16 +36,16 @@
 ```bash
 git clone https://github.com/Aden357-234/chimelong-guide.git
 cd chimelong-guide
-# 直接用浏览器打开 chimelong-guide.html 即可
+# 直接用浏览器打开 index.html 即可
 ```
 
-或者直接下载 `chimelong-guide.html` 发到手机微信，在手机上打开也一样。
+或者直接下载 `index.html` 发到手机微信，在手机上打开也一样。
 
 ## 文件说明
 
 | 文件 | 说明 |
 |------|------|
-| `chimelong-guide.html` | 主攻略页面（零依赖，单文件） |
+| `index.html` | 主攻略页面（零依赖，单文件） |
 | `radiant-forging-lovelace.md` | 攻略设计思路与原始方案 |
 | `README.md` | 本文件 |
 
