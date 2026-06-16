@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长隆欢乐世界一日游攻略 - 情侣刺激版</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #F5F7FA; color: #1a1a2e; line-height: 1.6; -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+
+  .hero {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #E85D04 100%);
+    color: white; border-radius: 16px; padding: 32px 28px; margin-bottom: 24px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after { content:''; position:absolute; right:-30px; top:-30px; width:160px; height:160px; background:rgba(255,255,255,0.1); border-radius:50%; }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  .hero .subtitle { font-size: 15px; opacity: 0.9; position: relative; z-index: 1; }
+  .hero-tags { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .tag { background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .info-card { background: white; border-radius: 12px; padding: 16px; border: 1px solid #E8ECF1; }
+  .info-card .label { font-size: 12px; color: #6B7280; margin-bottom: 4px; }
+  .info-card .value { font-size: 18px; font-weight: 700; color: #1a1a2e; }
+  .info-card .sub { font-size: 11px; color: #9CA3AF; margin-top: 2px; }
+  .info-card.highlight { border-color: #FF6B35; background: #FFF8F5; }
+  .info-card.highlight .value { color: #E85D04; }
+
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #1a1a2e; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .section-title .icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+
+  /* Priority Badges */
+  .priority-sss { background: #DC2626; color: white; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .priority-ss { background: #F97316; color: white; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .priority-s { background: #8B5CF6; color: white; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-mustplay { background: #DC2626; color: #FFFFFF; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .tag-recommend { background: #F97316; color: #FFFFFF; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .tag-optional { background: #9CA3AF; color: #FFFFFF; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .tag-zone { background: #F3E8FF; color: #7C3AED; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-zone-new { background: #FEF3C7; color: #B45309; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-queue { background: #DBEAFE; color: #1D4ED8; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .tag-tip { background: #FEF3C7; color: #B45309; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .tag-couple { background: #FCE7F3; color: #BE185D; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .tag-lunch { background: #DCFCE7; color: #166534; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .item-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content:''; position:absolute; left:11px; top:8px; bottom:8px; width:2px; background:#E5E7EB; border-radius:1px; }
+  .timeline-item { position: relative; margin-bottom: 18px; background: white; border-radius: 12px; padding: 16px; border: 1px solid #E8ECF1; transition: transform 0.2s, box-shadow 0.2s; }
+  .timeline-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .timeline-dot { position:absolute; left:-27px; top:20px; width:16px; height:16px; border-radius:50%; border:3px solid white; box-shadow:0 0 0 2px currentColor; z-index:1; }
+  .time-badge { display:inline-block; background:#EFF6FF; color:#2563EB; font-size:13px; font-weight:600; padding:3px 10px; border-radius:6px; margin-bottom:8px; }
+  .item-name { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .item-desc { font-size: 13px; color: #4B5563; line-height: 1.7; }
+  .strategy-box { margin-top:10px; background:#F0FDFA; border-left:3px solid #0D9488; padding:10px 12px; border-radius:0 8px 8px 0; font-size:12px; color:#0F766E; line-height:1.7; }
+  .strategy-box strong { color: #0D9488; }
+
+  /* Project card in timeline */
+  .project-card { margin-bottom:12px; padding:14px; border-radius:8px; border-left:3px solid #DC2626; background:#FEE2E2; }
+  .project-card.must { border-left-color: #DC2626; background: #FEE2E2; }
+  .project-card.recommend { border-left-color: #F97316; background: #FFF7ED; }
+  .project-card.optional { border-left-color: #9CA3AF; background: #F3F4F6; }
+  .project-card.couple { border-left-color: #EC4899; background: #FDF2F8; }
+  .project-card.lunch { border-left-color: #16A34A; background: #F0FDF4; }
+
+  /* Checklist */
+  .checklist { background: white; border-radius: 12px; padding: 18px; border: 1px solid #E8ECF1; margin-bottom: 24px; }
+  .checklist ul { list-style: none; padding: 0; }
+  .checklist li { padding: 6px 0; font-size: 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #F3F4F6; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { width:20px; height:20px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12px; color:white; flex-shrink:0; font-weight:bold; }
+
+  /* Plan B */
+  .planb-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+  .planb-card { background:white; border-radius:12px; padding:16px; border:1px solid #E8ECF1; }
+  .planb-card .pb-title { font-size:14px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .planb-card .pb-body { font-size:13px; color:#4B5563; line-height:1.7; }
+
+  /* Circus */
+  .circus-card { background:linear-gradient(135deg,#1e1b4b 0%,#312e81 100%); color:white; border-radius:16px; padding:24px; margin-top:24px; margin-bottom:32px; }
+  .circus-card h3 { font-size:18px; margin-bottom:12px; }
+  .circus-card p { font-size:14px; opacity:0.9; line-height:1.7; margin-bottom:8px; }
+
+  /* Alert */
+  .alert { background:#FEF2F2; border:1px solid #FCA5A5; border-radius:10px; padding:14px 16px; margin-bottom:20px; font-size:13px; color:#991B1B; display:flex; gap:10px; align-items:flex-start; }
+  .alert-icon { font-size:18px; flex-shrink:0; }
+
+  /* Route Summary */
+  .route-summary { background: white; border-radius: 16px; padding: 24px; border: 1px solid #E8ECF1; margin-bottom: 28px; }
+  .route-summary h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; text-align: center; }
+  .route-flow { display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center; gap: 6px; }
+  .route-flow .rf-item { padding: 8px 10px; border-radius: 10px; font-weight: 600; display: inline-flex; flex-direction: column; align-items: center; gap: 3px; line-height: 1.3; min-width: 0; }
+  .route-flow .rf-item .rf-name { font-size: 13px; white-space: nowrap; }
+  .route-flow .rf-item .rf-zone { font-size: 10px; font-weight: 500; opacity: 0.8; white-space: nowrap; padding: 1px 6px; border-radius: 4px; background: rgba(0,0,0,0.08); }
+  .route-flow .rf-arrow { color: #9CA3AF; font-size: 16px; align-self: center; flex-shrink: 0; }
+  .rf-must { background: #FEE2E2; color: #DC2626; }
+  .rf-must .rf-zone { background: rgba(220,38,38,0.12); }
+  .rf-rec { background: #FFF7ED; color: #EA580C; }
+  .rf-rec .rf-zone { background: rgba(234,88,12,0.12); }
+  .rf-opt { background: #F3F4F6; color: #6B7280; }
+  .rf-opt .rf-zone { background: rgba(107,114,128,0.12); }
+  .rf-couple { background: #FCE7F3; color: #BE185D; }
+  .rf-couple .rf-zone { background: rgba(190,24,93,0.12); }
+  .rf-lunch { background: #DCFCE7; color: #166534; }
+  .rf-lunch .rf-zone { background: rgba(22,101,52,0.12); }
+  .rf-gate { background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%); color: white; justify-content: center; box-shadow: 0 2px 8px rgba(99,102,241,0.3); }
+  .rf-gate .rf-zone { background: rgba(255,255,255,0.15); }
+  .rf-gate .rf-name { font-size: 13px; letter-spacing: 1px; }
+
+  /* Scores - removed */
+
+  .footer { text-align:center; padding:24px; color:#9CA3AF; font-size:12px; border-top:1px solid #E8ECF1; margin-top:32px; }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px 10px; }
+    .hero { padding: 20px 16px; border-radius: 12px; }
+    .hero h1 { font-size: 20px; }
+    .hero .subtitle { font-size: 13px; }
+    .hero-tags { gap: 6px; }
+    .hero-tags .tag { padding: 3px 10px; font-size: 11px; }
+    .hero::after { width: 100px; height: 100px; right: -20px; top: -20px; }
+
+    .info-grid { grid-template-columns: 1fr; gap: 8px; }
+    .info-card { padding: 12px; }
+    .info-card .value { font-size: 15px; }
+    .info-card .sub { font-size: 10px; }
+
+    .route-summary { padding: 16px 12px; border-radius: 12px; }
+    .route-summary h3 { font-size: 14px; margin-bottom: 12px; }
+    .route-flow { gap: 5px; justify-content: flex-start; }
+    .route-flow .rf-item { padding: 5px 7px; border-radius: 7px; gap: 2px; }
+    .route-flow .rf-item .rf-name { font-size: 11px; }
+    .route-flow .rf-item .rf-zone { font-size: 8px; padding: 1px 4px; }
+    .route-flow .rf-arrow { font-size: 13px; }
+    .rf-gate .rf-name { font-size: 11px !important; }
+
+    .section-title { font-size: 16px; margin-bottom: 10px; }
+    .section-title .icon { width: 24px; height: 24px; font-size: 12px; }
+
+    /* Timeline mobile */
+    .timeline { padding-left: 24px; }
+    .timeline::before { left: 9px; }
+    .timeline-item { padding: 10px 10px; margin-bottom: 12px; border-radius: 10px; }
+    .timeline-item:hover { transform: none; box-shadow: none; }
+    .timeline-dot { left: -22px; top: 14px; width: 14px; height: 14px; border-width: 2px; }
+    .time-badge { font-size: 11px; padding: 2px 8px; margin-bottom: 6px; }
+    .item-name { font-size: 14px; word-break: break-word; }
+    .item-name span { font-size: 10px !important; padding: 1px 5px !important; }
+    .item-desc { font-size: 12px; line-height: 1.6; }
+    .strategy-box { font-size: 11px; padding: 8px 10px; }
+    .project-card { padding: 10px; }
+
+    /* Tags mobile */
+    .item-tags { gap: 4px; margin-top: 8px; }
+    .item-tags span { font-size: 10px !important; padding: 1px 6px !important; }
+
+    /* Checklist mobile */
+    .checklist { padding: 12px; border-radius: 10px; }
+    .checklist li { font-size: 13px; padding: 5px 0; gap: 8px; }
+    .check-icon { width: 18px; height: 18px; font-size: 11px; }
+
+    /* Plan B mobile */
+    .planb-grid { grid-template-columns: 1fr; gap: 10px; }
+    .planb-card { padding: 12px; border-radius: 10px; }
+    .planb-card .pb-title { font-size: 13px; }
+    .planb-card .pb-body { font-size: 12px; }
+
+    /* Circus mobile */
+    .circus-card { padding: 16px 14px; border-radius: 12px; }
+    .circus-card h3 { font-size: 16px; margin-bottom: 10px; }
+    .circus-card p { font-size: 13px; }
+
+    /* Alert mobile */
+    .alert { padding: 10px 12px; font-size: 12px; gap: 8px; border-radius: 8px; }
+    .alert-icon { font-size: 16px; }
+
+    /* Legend mobile */
+    .tag-mustplay, .tag-recommend, .tag-optional, .tag-couple, .tag-zone, .tag-zone-new { font-size: 10px !important; padding: 1px 6px !important; }
+
+    /* Transport mobile */
+    .info-card .value { font-size: 13px !important; }
+  }
+
+  @media (max-width: 400px) {
+    .container { padding: 8px 6px; }
+    .hero { padding: 16px 12px; }
+    .hero h1 { font-size: 18px; }
+    .hero .subtitle { font-size: 12px; }
+    .timeline-item { padding: 8px; margin-bottom: 8px; }
+    .item-name { font-size: 13px; }
+    .item-desc { font-size: 11px; }
+    .route-flow .rf-item { padding: 3px 5px; }
+    .route-flow .rf-item .rf-name { font-size: 10px; }
+    .route-flow .rf-item .rf-zone { font-size: 7px; }
+    .rf-gate .rf-name { font-size: 10px !important; }
+    .circus-card { padding: 12px 10px; }
+    .circus-card h3 { font-size: 14px; }
+    .circus-card p { font-size: 12px; }
+  }
+
+  /* Smooth scroll & tap highlight removal for mobile */
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  /* Safe area for notched phones */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>🎢 长隆欢乐世界 一日游攻略</h1>
+    <p class="subtitle">情侣刺激专属 | 周二优化 | 南门进→北门出→大马戏</p>
+    <div class="hero-tags">
+      <span class="tag">2026年6月最新版</span>
+      <span class="tag">周二（工作日）</span>
+      <span class="tag">情侣+刺激优先</span>
+    </div>
+  </div>
+
+  <!-- Alert -->
+  <div class="alert">
+    <span class="alert-icon">⚠️</span>
+    <div><strong>重要提醒：</strong>垂直过山车和十环过山车目前处于升级改造状态，暂不开放！但园区已上线<strong>六大全新项目</strong>（弹射过山车、超级激流、超级海盗船、魔力秋千、飓风飞椅、星际战舰），体验依然拉满。</div>
+  </div>
+
+  <!-- Key Info -->
+  <div class="info-grid">
+    <div class="info-card highlight">
+      <div class="label">游玩时间</div>
+      <div class="value">09:30入园 → 17:30出园</div>
+      <div class="sub">共8小时游玩</div>
+    </div>
+    <div class="info-card">
+      <div class="label">大马戏演出</div>
+      <div class="value">20:00 - 21:20</div>
+      <div class="sub">一等座 · C2区3排6-7座</div>
+    </div>
+    <div class="info-card highlight">
+      <div class="label">周二人流优势</div>
+      <div class="value">排队减半</div>
+      <div class="sub">比周末少60%+游客</div>
+    </div>
+  </div>
+
+  <!-- Route Flow Summary -->
+  <div class="route-summary">
+    <h3>🗺️ 游玩路线总览</h3>
+    <div class="route-flow">
+      <span class="rf-item rf-gate"><span class="rf-name">🚪 南门进</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-rec"><span class="rf-name">① 飞马家庭</span><span class="rf-zone">丛林探险</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-must"><span class="rf-name">② 超级激流</span><span class="rf-zone">律动天地</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-must"><span class="rf-name">③ 自由落体</span><span class="rf-zone">欢乐嘉年华</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-couple"><span class="rf-name">④ 飞天魔轮</span><span class="rf-zone">欢乐嘉年华</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-must"><span class="rf-name">⑤ 火箭过山车</span><span class="rf-zone">尖叫地带</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-must"><span class="rf-name">⑥ 弹射过山车</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-rec"><span class="rf-name">⑦ 超级海盗船</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-opt"><span class="rf-name">⑧ 碰碰车</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-opt"><span class="rf-name">⑨ 飓风飞椅</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-opt"><span class="rf-name">⑩ 魔力秋千</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-opt"><span class="rf-name">⑪ 星际战舰</span><span class="rf-zone">全新区域</span></span><span class="rf-arrow">→</span>
+      <span class="rf-item rf-gate"><span class="rf-name">🚪 北门出</span></span>
+    </div>
+  </div>
+
+  <!-- 必玩/可选 Legend -->
+  <div style="background:white;border-radius:12px;padding:16px;border:1px solid #E8ECF1;margin-bottom:24px;">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">🏷️ 项目分类说明</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:10px 16px;font-size:13px;">
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-mustplay">必玩</span><span style="color:#6B7280;">错过等于白来</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-recommend">推荐</span><span style="color:#6B7280;">值得体验</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-optional">可选</span><span style="color:#6B7280;">时间够再玩</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-couple">情侣专属</span><span style="color:#6B7280;">浪漫必打卡</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-zone">区域</span><span style="color:#6B7280;">主题区域</span></div>
+      <div style="display:flex;align-items:center;gap:6px;"><span class="tag-zone-new">全新区域</span><span style="color:#6B7280;">2026新板块</span></div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;line-height:2;">
+      <strong style="color:#DC2626;">🔴 必玩（5个）：</strong>超级激流（律动天地） · 自由落体（欢乐嘉年华） · 火箭过山车（尖叫地带） · 弹射过山车（全新区域） · 飞天魔轮（欢乐嘉年华）<br>
+      <strong style="color:#EA580C;">🟠 推荐（2个）：</strong>飞马家庭过山车（丛林探险） · 超级海盗船（全新区域）<br>
+      <strong style="color:#6B7280;">⚪ 可选（4个）：</strong>碰碰车 · 飓风飞椅 · 魔力秋千 · 星际战舰（均在全新区域）
+    </div>
+  </div>
+
+  <!-- Must Bring -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon" style="background:#DBEAFE;color:#2563EB;">📦</span> 必带物品清单</h2>
+    <div class="checklist">
+      <ul>
+        <li><span class="check-icon" style="background:#3B82F6;">✓</span>一次性雨衣 x2（第二站超级激流就要穿！园内买贵）</li>
+        <li><span class="check-icon" style="background:#10B981;">✓</span>矿泉水 x4瓶（园内饮料10元+/瓶）</li>
+        <li><span class="check-icon" style="background:#8B5CF6;">✓</span>充电宝 + 数据线（全天拍照+查地图耗电快）</li>
+        <li><span class="check-icon" style="background:#F59E0B;">✓</span>舒适防滑运动鞋（一天步行约15000步！）</li>
+        <li><span class="check-icon" style="background:#EF4444;">✓</span>防晒霜 / 驱蚊水（户外项目多）</li>
+        <li><span class="check-icon" style="background:#6366F1;">✓</span>身份证（入园刷证）+ 提前买好的门票二维码</li>
+        <li><span class="check-icon" style="background:#EC4899;">✓</span>少量零食/能量棒（午餐可能排队）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== DETAILED TIMELINE ===== -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon" style="background:#FEF3C7;color:#D97706;">📅</span> 详细游玩路线</h2>
+
+    <div class="timeline">
+
+      <!-- ============ ① 飞马家庭过山车 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#F97316;background:#F97316;"></div>
+        <div class="time-badge" style="background:#FFF7ED;color:#EA580C;">09:35 - 10:00 &nbsp;|&nbsp; 第1站</div>
+        <div class="project-card recommend">
+          <div class="item-name">① 飞马家庭过山车 ★★★ <span class="tag-zone">丛林探险</span> <span class="tag-recommend">推荐</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            入园第一个项目，作为热身开胃菜。家庭过山车刺激度适中，帮助身体适应过山车的加速度和转弯。<br>
+            <strong>排队策略：</strong>开园5分钟内到，基本零排队，随到随玩。<br>
+            <strong style="color:#EA580C;">值得体验！但如果排队超过20分钟就先跳过，回头再来。</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 ~5min</span>
+            <span class="tag-tip">推荐热身，>20min跳过</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ② 超级激流 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#DC2626;background:#DC2626;"></div>
+        <div class="time-badge">10:00 - 10:35 &nbsp;|&nbsp; 第2站</div>
+        <div class="project-card must">
+          <div class="item-name">② 超级激流 ★★★★ <span class="tag-zone">律动天地</span> <span style="font-size:12px;background:#0EA5E9;color:white;padding:2px 6px;border-radius:4px;">2026全新</span> <span class="tag-mustplay">必玩</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>全球首创"旋转式双提升"系统！</strong>轨道336m、高度21.5米、最高速64.4km/h。<br>
+            旋转提升→急速俯冲→巨浪扑面！入水那一下全车尖叫！<br>
+            <strong style="color:#DC2626;">⚠️ 雨衣提前穿好！全身湿透预警！鞋也会湿！</strong><br>
+            <strong>为什么放第二站：</strong>刚入园排队最短，湿了正好提神醒脑，开局气氛拉满！
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 5-15min</span>
+            <span class="tag-tip">开园排队最短，有雨衣直接冲</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ③ 自由落体 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#DC2626;background:#DC2626;"></div>
+        <div class="time-badge">10:35 - 11:10 &nbsp;|&nbsp; 第3站</div>
+        <div class="project-card must">
+          <div class="item-name">③ 自由落体 ★★★★★ <span class="tag-zone">欢乐嘉年华</span> <span class="tag-mustplay">必玩</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>高空停顿3秒→极速下坠！</strong>压迫感极强，心脏狂跳的顶级刺激项目。<br>
+            缓缓升到最高点，短暂悬停感受脚下的万丈深渊，然后——自由落体！<br>
+            <strong>建议：</strong>闭眼会少一半体验，睁着眼才能感受极致恐惧和快感！
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 10-25min</span>
+            <span class="tag-tip">上午排队短，越早越好</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ④ 飞天魔轮 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#EC4899;background:#EC4899;"></div>
+        <div class="time-badge" style="background:#FCE7F3;color:#BE185D;">11:10 - 11:45 &nbsp;|&nbsp; 第4站</div>
+        <div class="project-card couple">
+          <div class="item-name">④ 飞天魔轮（摩天轮）★★★ <span class="tag-zone">欢乐嘉年华</span> <span class="tag-couple">情侣必玩</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>缓慢上升，俯瞰整个欢乐世界全景！</strong><br>
+            🎡 约15-20分钟一圈，缓冲前面3个刺激项目的冲击<br>
+            🎡 到达最高点时——表白/纪念日/纪念照的绝佳时机<br>
+            🎡 拍一张两人+全景的合影，上午光线最好<br>
+            🎡 <strong>为什么上午就玩摩天轮：</strong>上午人少不排队，而且此时身体刚被刺激过，摩天轮的缓慢节奏刚好让你喘口气
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 5-15min</span>
+            <span class="tag-couple">❤️ 上午人少+光线好=最佳拍照时机</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ 午餐 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#16A34A;background:#16A34A;"></div>
+        <div class="time-badge" style="background:#DCFCE7;color:#166534;">11:45 - 12:30 &nbsp;|&nbsp; 🍚 午餐</div>
+        <div class="project-card lunch">
+          <div class="item-name">午餐时间</div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>原则：七分饱，不要吃太油！</strong><br>
+            ✅ 推荐：鸡腿饭、牛肉饭、汉堡套餐、意面<br>
+            ❌ 避免：火锅、麻辣烫、大量奶茶<br><br>
+            <em style="color:#DC2626;font-size:12px;">⚠️ 饭后马上要挑战火箭过山车和弹射过山车，吃太饱容易吐！</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑤ 火箭过山车 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#DC2626;background:#DC2626;"></div>
+        <div class="time-badge" style="background:#FEE2E2;color:#DC2626;">12:30 - 13:20 &nbsp;|&nbsp; 第5站 🔥</div>
+        <div class="project-card must">
+          <div class="item-name">⑤ 火箭过山车 ★★★★★ <span class="tag-zone">尖叫地带</span> <span style="font-size:12px;background:#F97316;color:white;padding:2px 6px;border-radius:4px;">最刺激</span> <span class="tag-mustplay">必玩</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>长隆欢乐世界代表项目！全园单次体验最刺激！</strong><br>
+            垂直跌落+倒挂俯冲+高速回旋一气呵成，全程无喘息。<br>
+            <strong>无论排多久都值得！</strong>周二预估排队30-50分钟。<br>
+            <strong>为什么午饭后第一个冲这个：</strong>全园排队最长的项目，趁午饭刚结束人相对少，先把最难排的搞定！
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue" style="background:#FEE2E2;color:#DC2626;">排队 30-50min（周二）</span>
+            <span class="tag-tip">今日第一优先级！饭后趁人少先冲</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑥ 弹射过山车 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#DC2626;background:#DC2626;"></div>
+        <div class="time-badge" style="background:#FEE2E2;color:#DC2626;">13:20 - 14:00 &nbsp;|&nbsp; 第6站 🔥</div>
+        <div class="project-card must">
+          <div class="item-name">⑥ 弹射过山车 ★★★★★ <span class="tag-zone-new">全新区域</span> <span style="font-size:12px;background:#EF4444;color:white;padding:2px 6px;border-radius:4px;">全园TOP1</span> <span class="tag-mustplay">必玩</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>园区核心过山车！电磁弹射起步，全程高能无喘息！</strong><br>
+            0-100km/h瞬间弹射加速，翻转+倒挂+俯冲组合拳，从头叫到尾。<br>
+            周二预估排队：<strong>20-40分钟</strong>（周末可达90分钟+）。<br>
+            <strong>和火箭过山车对比：</strong>弹射更"推背"、火箭更"坠落"，两个风格不同但都是顶级！
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue" style="background:#FEE2E2;color:#DC2626;">排队 20-40min（周二）</span>
+            <span class="tag-tip">和火箭同区域，玩完火箭直接过来</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑦ 超级海盗船 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#F97316;background:#F97316;"></div>
+        <div class="time-badge" style="background:#FFF7ED;color:#EA580C;">14:00 - 14:30 &nbsp;|&nbsp; 第7站</div>
+        <div class="project-card recommend">
+          <div class="item-name">⑦ 超级海盗船 ★★★★ <span class="tag-zone-new">全新区域</span> <span class="tag-recommend">推荐</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            大幅摇摆+失重交替，<strong>推荐坐后排</strong>失重感最强。<br>
+            情侣效果不错——坐在两侧可以靠在一起，共同面对恐惧。<br>
+            <strong style="color:#EA580C;">值得体验！排队≤25min→玩！>30min→跳过</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 10-25min</span>
+            <span class="tag-couple">💕 情侣推荐坐后排</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑧ 碰碰车 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#9CA3AF;background:#9CA3AF;"></div>
+        <div class="time-badge" style="background:#F3F4F6;color:#6B7280;">14:30 - 14:50 &nbsp;|&nbsp; 第8站</div>
+        <div class="project-card optional">
+          <div class="item-name">⑧ 碰碰车 ★★ <span class="tag-zone-new">全新区域</span> <span class="tag-optional">可选</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            经典解压项目，情侣对撞超欢乐！<br>
+            <strong>玩点：</strong>一个人负责开车，一个人负责指挥撞击方向，配合感拉满。<br>
+            <strong style="color:#6B7280;">排队≤10min→玩！>15min→跳过</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 5-15min</span>
+            <span class="tag-couple">💕 情侣对撞超欢乐</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑨ 飓风飞椅 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#9CA3AF;background:#9CA3AF;"></div>
+        <div class="time-badge" style="background:#F3F4F6;color:#6B7280;">14:50 - 15:15 &nbsp;|&nbsp; 第9站</div>
+        <div class="project-card optional">
+          <div class="item-name">⑨ 飓风飞椅 ★★★ <span class="tag-zone-new">全新区域</span> <span style="font-size:12px;background:#0EA5E9;color:white;padding:2px 6px;border-radius:4px;">2026新版</span> <span class="tag-optional">可选</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            2026新版升级飞椅，倾斜角度更大，旋转更畅快。<br>
+            温和缓冲项目，不刺激但很舒服，高空旋转时风景不错。<br>
+            <strong style="color:#6B7280;">排队≤15min→玩！>15min→跳过</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 5-15min</span>
+            <span class="tag-tip">温和缓冲，排长就跳</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑩ 魔力秋千 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#9CA3AF;background:#9CA3AF;"></div>
+        <div class="time-badge" style="background:#F3F4F6;color:#6B7280;">15:15 - 15:45 &nbsp;|&nbsp; 第10站</div>
+        <div class="project-card optional">
+          <div class="item-name">⑩ 魔力秋千 ★★★ <span class="tag-zone-new">全新区域</span> <span style="font-size:12px;background:#0EA5E9;color:white;padding:2px 6px;border-radius:4px;">2026全新</span> <span class="tag-optional">可选</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            高空旋转飞椅，风景极佳，<strong>拍照出片</strong>！<br>
+            高空旋转时牵手的经典场景，浪漫指数不低。<br>
+            <strong>玩点：</strong>旋转时看远处的风景+拍照，情侣体验不错。<br>
+            <strong style="color:#6B7280;">排队≤15min→玩！>20min→跳过</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 10-20min</span>
+            <span class="tag-couple">📸 拍照出片</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ⑪ 星际战舰 ============ -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="color:#9CA3AF;background:#9CA3AF;"></div>
+        <div class="time-badge" style="background:#F3F4F6;color:#6B7280;">15:45 - 16:20 &nbsp;|&nbsp; 第11站</div>
+        <div class="project-card optional">
+          <div class="item-name">⑪ 星际战舰 ★★★★ <span class="tag-zone-new">全新区域</span> <span style="font-size:12px;background:#0EA5E9;color:white;padding:2px 6px;border-radius:4px;">2026全新</span> <span class="tag-optional">可选</span></div>
+          <div class="item-desc" style="margin-top:6px;">
+            <strong>2026新项目！</strong>科幻主题沉浸式体验，半室内<strong>有空调</strong>。<br>
+            作用：吹空调+休息+恢复体力+互动射击。<br>
+            下午玩了一天体力消耗大，正好在这里歇一歇。<br>
+            <strong style="color:#6B7280;">排队≤20min→玩！>30min→跳过</strong>
+          </div>
+          <div class="item-tags">
+            <span class="tag-queue">排队 10-25min</span>
+            <span class="tag-tip">有空调！下午休息恢复体力</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ 补漏/二刷/拍照 ============ -->
+      <div class="timeline-item" style="border-color:#F59E0B;">
+        <div class="timeline-dot" style="color:#F59E0B;background:#F59E0B;"></div>
+        <div class="time-badge" style="background:#FEF3C7;color:#B45309;">16:20 - 17:20 &nbsp;|&nbsp; 补漏 / 二刷 / 拍照</div>
+        <div class="item-desc">
+          <strong>项目都刷完了！</strong>还剩1小时自由时间，根据你的情况选择：<br><br>
+          <strong>💪 体力充沛→二刷必玩项目（优先级排序）：</strong><br>
+          ① 火箭过山车二刷 → ② 弹射过山车二刷 → ③ 自由落体二刷 → ④ 超级激流二刷<br><br>
+          <strong>📸 情侣打卡→拍照留念：</strong><br>
+          找好看的背景拍情侣照、园区标志性建筑打卡<br><br>
+          <strong>🛒 购物休息→纪念品商店：</strong><br>
+          买点纪念品，顺便歇歇脚<br><br>
+          <em style="color:#6B7280;font-size:12px;">周二人少，二刷排队很短，大概15-25分钟就能再玩一次！</em>
+        </div>
+      </div>
+
+      <!-- ============ Exit ============ -->
+      <div class="timeline-item" style="border-color:#6366F1; background:#EEF2FF;">
+        <div class="timeline-dot" style="color:#6366F1;background:#6366F1;"></div>
+        <div class="time-badge" style="background:#E0E7FF;color:#4338CA;">17:20 - 17:30 &nbsp;|&nbsp; 北门出园</div>
+        <div class="item-desc">
+          <strong>出园→步行5-8分钟到大马戏剧场</strong><br><br>
+          <strong>时间衔接：</strong><br>
+          17:30出园 → 吃晚餐/休息 → 18:30步行到大马戏 → 一等座对号入座，从容入场 → <strong>20:00大马戏正式开演！21:20结束</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Circus -->
+  <div class="circus-card">
+    <h3>🎪 长隆国际大马戏 衔接指南</h3>
+    <p><strong>位置：</strong>大马戏剧场就在欢乐世界<strong>北门旁边</strong>！出园后按指示牌步行5-8分钟即可到达。</p>
+    <p><strong>场次信息：</strong>20:00 - 21:20（约80分钟）</p>
+    <p><strong>你们的座位：</strong><br>
+      🎫 <strong>一等座 · C2区3排</strong><br>
+      &emsp;座位号：C2区3排7座 / C2区3排6座<br>
+      &emsp;一等座对号入座，不用抢位！18:30左右到场即可，从容入场。<br>
+      &emsp;<strong style="color:#FCD34D;">C2区3排视野极佳</strong>——居中偏前，互动环节容易被选中，拍照角度也最好！
+    </p>
+    <p><strong>时间衔接：</strong>17:30出园 → 吃晚餐/休息 → 18:30步行到大马戏 → 19:00左右入场 → 20:00开演</p>
+    <p><strong>演出亮点：</strong>300多名来自20多个国家的马戏精英，高空飞人、驯兽表演、魔术、水上芭蕾、摩托特技...全程无尿点约80分钟。</p>
+  </div>
+
+  <!-- Plan B -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon" style="background:#FEE2E2;color:#DC2626;">🆘</span> 各种突发情况应对方案（Plan B）</h2>
+    <div class="planb-grid">
+
+      <div class="planb-card">
+        <div class="pb-title"><span>🌧️</span> 下雨天怎么办</div>
+        <div class="pb-body">
+          <strong>优先级调整：</strong>星际战舰 → 超级海盗船（有遮棚）<br><br>
+          室外项目等雨停再玩。反正超级激流已经湿了，下雨反而无所谓。<br><br>
+          小雨不影响大部分项目，大雨则建议改期。
+        </div>
+      </div>
+
+      <div class="planb-card">
+        <div class="pb-title"><span>⏱️</span> 迟到了（下午才到）</div>
+        <div class="pb-body">
+          <strong>放弃可选和推荐项目，直奔必玩四件套：</strong><br>
+          1. 火箭过山车<br>
+          2. 弹射过山车<br>
+          3. 自由落体<br>
+          4. 超级激流<br><br>
+          这四个是"不可错过"的核心体验。飞天魔轮如果还有时间再补。
+        </div>
+      </div>
+
+      <div class="planb-card">
+        <div class="pb-title"><span>💨</span> 人特别多（赶上节假日）</div>
+        <div class="pb-body">
+          <strong>启动紧急模式：</strong><br>
+          1. 购买快速通道票（如可用）<br>
+          2. 开园直冲火箭过山车<br>
+          3. 放弃飞马/碰碰车/飓风飞椅等非核心项目<br>
+          4. 午餐自带或错峰13:30后再吃
+        </div>
+      </div>
+
+      <div class="planb-card">
+        <div class="pb-title"><span>🔄</span> 极限玩家加餐版</div>
+        <div class="pb-body">
+          <strong>周二人少就是资本！</strong><br>
+          16:20-17:20补漏时间可以二刷：<br>
+          ① 火箭过山车二刷<br>
+          ② 弹射过山车二刷<br>
+          ③ 自由落体二刷<br><br>
+          第一次体验惊险，第二次享受快感！
+        </div>
+      </div>
+
+      <div class="planb-card">
+        <div class="pb-title"><span>👶</span> 未来带小孩再来</div>
+        <div class="pb-body">
+          <strong>亲子友好路线：</strong><br>
+          跳过：火箭/弹射/自由落体<br>
+          增加：梦幻转马、宝贝乐园、飞马家庭过山车x2<br><br>
+          重点：超级海盗船、碰碰车、飞天魔轮、魔力秋千、超级激流（只看不玩也行）
+        </div>
+      </div>
+
+      <div class="planb-card">
+        <div class="pb-title"><span>😱</span> 同行有人胆小</div>
+        <div class="pb-body">
+          <strong>温和区专享路线：</strong><br>
+          飞马家庭 → 飞天魔轮 → 碰碰车 → 飓风飞椅 → 魔力秋千 → 星际战舰 → 超级海盗船<br><br>
+          胆小的可以在外面等，不用强迫。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Transport -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon" style="background:#E0E7FF;color:#4338CA;">🚇</span> 交通指南</h2>
+    <div class="info-card" style="margin-bottom:12px;">
+      <div class="label">地铁（推荐首选）</div>
+      <div class="value" style="font-size:15px;">3号线 / 7号线 → 汉溪长隆站 E口</div>
+      <div class="sub">出站步行5分钟到南门</div>
+    </div>
+    <div class="info-card" style="margin-bottom:12px;">
+      <div class="label">自驾</div>
+      <div class="value" style="font-size:15px;">导航"广州长隆度假区"</div>
+      <div class="sub">停车费平日20元/天，节假日50元/天</div>
+    </div>
+    <div class="info-card">
+      <div class="label">高铁中转</div>
+      <div class="value" style="font-size:15px;">广州南站 → 地铁7号线（4站10分钟）</div>
+      <div class="sub">汉溪长隆站下车，非常方便</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>本攻略基于 2026 年6月最新信息整理 | 园区信息可能变动，以现场公告为准</p>
+    <p>祝你们在长隆玩得开心！🎉✨🎉</p>
+  </div>
+
+</div>
+</body>
+</html>
